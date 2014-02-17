@@ -20,7 +20,8 @@ public class OI
     Button leftFlipperButton;
     Button rightFlipperButton;
     Button shoot;
-    Button intakeToggle;
+    Button driverIntakeToggle;
+    //Button operatorIntakeToggle;
     Button pass;
     Button load;
     
@@ -31,11 +32,13 @@ public class OI
         leftFlipperButton = new JoystickButton(driver.m_joy, XboxController.XBOX_LB);
         rightFlipperButton = new JoystickButton(driver.m_joy, XboxController.XBOX_RB);
         shoot = new JoystickButton(operator.m_joy, XboxController.XBOX_Y);
-        intakeToggle = new JoystickButton(operator.m_joy, XboxController.XBOX_LB);
+        driverIntakeToggle = new JoystickButton(driver.m_joy, XboxController.XBOX_B);
+        //operatorIntakeToggle = new JoystickButton(operator.m_joy, XboxController.XBOX_LB);
         pass = new JoystickButton(operator.m_joy, XboxController.XBOX_A);
         load = new JoystickButton(operator.m_joy, XboxController.XBOX_START);
         
-        intakeToggle.whenPressed(new IntakeDown());
+        driverIntakeToggle.whenPressed(new IntakeDown());
+        //operatorIntakeToggle.whenPressed(new IntakeDown());
         leftFlipperButton.whenPressed(new ActivateLeftFlippers());
         rightFlipperButton.whenPressed(new ActivateRightFlippers());
         shoot.whenPressed(new ShootCatapult());

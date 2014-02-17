@@ -49,7 +49,7 @@ public class IntakeSystem extends Subsystem
         }
         else
         {
-            RobotMap.peter.set(DoubleSolenoid.Value.kForward);
+            RobotMap.peter.set(DoubleSolenoid.Value.kReverse);
         }
     }
 }

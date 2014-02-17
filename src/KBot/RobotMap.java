@@ -79,7 +79,7 @@ public class RobotMap
         rightFlipper = new DoubleSolenoid(1, 3, 4);
         rightFlipper.set(DoubleSolenoid.Value.kReverse);
         peter = new DoubleSolenoid(2, 1, 2);
-        peter.set(DoubleSolenoid.Value.kForward);
+        peter.set(DoubleSolenoid.Value.kOff);
         
         //Initialize Input Sensors
         shooterLimit = new DigitalInput(1);
