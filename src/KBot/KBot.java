@@ -8,6 +8,7 @@
 package KBot;
 
 
+import KBot.autonomous.AutonomousCommand;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -32,11 +33,11 @@ public class KBot extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
-        autonomousCommand = new DriveCommand();
-
         // Initialize all subsystems
         RobotMap.init();
         CommandBase.init();
+        
+        autonomousCommand = new AutonomousCommand();
     }
 
     public void autonomousInit() {

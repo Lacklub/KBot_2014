@@ -7,6 +7,8 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.Timer;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -44,6 +46,12 @@ public class RobotMap
     public static DigitalInput shooterLimit;
     public static AnalogPotentiometer pot;
     
+    //Declare network table for vision system
+    public static NetworkTable visionTable;
+    
+    //Declare autonomous Timer
+    public static Timer autonomousTimer;
+    
     //THESE NEED TO BE MOVED TO WHERE POTENTIOMETER IS USED
     public static boolean isPotentiometerSet;
     public static double potentiometerOffset;
@@ -79,7 +87,7 @@ public class RobotMap
         rightFlipper = new DoubleSolenoid(1, 3, 4);
         rightFlipper.set(DoubleSolenoid.Value.kReverse);
         peter = new DoubleSolenoid(2, 1, 2);
-        peter.set(DoubleSolenoid.Value.kForward);
+        peter.set(DoubleSolenoid.Value.kOff);
         
         //Initialize Input Sensors
         shooterLimit = new DigitalInput(1);
@@ -96,5 +104,11 @@ public class RobotMap
         rightIntakeMotor.set(0.0);
         leftCatapult.set(0.0);
         rightCatapult.set(0.0);
+        
+        //initialize NetworkTable
+        visionTable = NetworkTable.getTable("SmartDashboard");
+        
+        //initialize autonomous Timer
+        autonomousTimer = new Timer();
     }
 }
