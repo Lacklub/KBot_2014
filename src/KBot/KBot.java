@@ -22,7 +22,7 @@ import KBot.commands.DriveCommand;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-public class KitBot extends IterativeRobot {
+public class KBot extends IterativeRobot {
 
     Command autonomousCommand;
 
@@ -35,8 +35,8 @@ public class KitBot extends IterativeRobot {
         autonomousCommand = new DriveCommand();
 
         // Initialize all subsystems
-        CommandBase.init();
         RobotMap.init();
+        CommandBase.init();
     }
 
     public void autonomousInit() {
