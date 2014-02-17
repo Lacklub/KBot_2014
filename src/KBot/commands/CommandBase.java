@@ -6,6 +6,7 @@ import KBot.subsystems.DriveSystem;
 import KBot.subsystems.IntakeSystem;
 import edu.wpi.first.wpilibj.command.Command;
 import KBot.OI;
+import KBot.subsystems.Vision;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -21,6 +22,7 @@ public abstract class CommandBase extends Command
     public static IntakeSystem Intake = new IntakeSystem();
     public static FlipperSubsystem flippers = new FlipperSubsystem();
     public static Catapult catapult = new Catapult();
+    public static Vision vision;
 
     public static void init() 
     {
@@ -29,6 +31,7 @@ public abstract class CommandBase extends Command
         // which commands extend), subsystems are not guaranteed to be
         // yet. Thus, their requires() statements may grab null pointers. Bad
         // news. Don't move it.
+        vision = new Vision();
         oi = new OI();
 
         // Show what command your subsystem is running on the SmartDashboard
