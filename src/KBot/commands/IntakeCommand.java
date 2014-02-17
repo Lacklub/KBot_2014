@@ -20,7 +20,7 @@ public class IntakeCommand extends CommandBase
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-        CommandBase.Intake.runIntake(CommandBase.oi.operator.getTrigger());
+        CommandBase.Intake.runIntake(CommandBase.oi.driver.getTrigger());
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -245,7 +245,7 @@ public class Catapult extends Subsystem
         if(shootingState == 2 && calibratedValue < 0.8)
         { 
             //changing this should change shooting angle 
-            shoot(0.4); // changing this should change shooting speed
+            shoot(0.55); // changing this should change shooting speed
             disengageBrake();
             System.out.println("in state 2");
         }
@@ -393,6 +393,18 @@ public class Catapult extends Subsystem
             RobotMap.potentiometerOffset = (1.1515*potValue - 3.314);
             RobotMap.potentiometerScaling = potValue - (1.1515*potValue - 3.314); 
             // derived from measurements of max/min on both robots and approximate scaling with linear equation
+        }
+        double calibratedValue = (RobotMap.pot.get()-RobotMap.potentiometerOffset)/RobotMap.potentiometerScaling;
+        if(calibratedValue != 0.0)
+        {
+            calibratedValue = 1 - calibratedValue;
+        }
+        else
+        {
+            System.out.println("Calibrated Value is zero, pot value:" + RobotMap.pot.get());
+        }
+        if(calibratedValue < 0.1){
+            potentiometerFailed = false;
         }
     }
 }

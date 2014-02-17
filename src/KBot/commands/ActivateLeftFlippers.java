@@ -11,7 +11,7 @@ public class ActivateLeftFlippers extends CommandBase
     public ActivateLeftFlippers() 
     {
         // Use requires() here to declare subsystem dependencies
-        requires(CommandBase.flippers);
+        //requires(CommandBase.flippers);
     }
 
     // Called just before this Command runs the first time
