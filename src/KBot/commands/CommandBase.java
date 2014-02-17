@@ -1,9 +1,12 @@
-package KitBot.commands;
+package KBot.commands;
 
+import KBot.subsystems.Catapult;
+import KBot.subsystems.FlipperSubsystem;
+import KBot.subsystems.DriveSystem;
+import KBot.subsystems.IntakeSystem;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import KitBot.OI;
-import KitBot.subsystems.*;
+import KBot.OI;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package KitBot;
+package KBot;
 
 import edu.wpi.first.wpilibj.Joystick;
 

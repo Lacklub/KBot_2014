@@ -1,9 +1,9 @@
 
-package KitBot.subsystems;
+package KBot.subsystems;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import KitBot.RobotMap;
+import KBot.RobotMap;
 import edu.wpi.first.wpilibj.Timer;
 
 /**

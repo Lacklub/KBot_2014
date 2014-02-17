@@ -2,41 +2,26 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package KitBot.commands;
+package KBot.commands;
 
 /**
  *
  * @author KBotics
  */
-public class ActivateRightFlippers extends CommandBase {
-    boolean lastAState;
-    boolean driveState;
-    public ActivateRightFlippers() {
+public class IntakeDown extends CommandBase {
+    
+    public IntakeDown() {
         // Use requires() here to declare subsystem dependencies
-        requires(CommandBase.flippers);
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        lastAState = true;
-        driveState = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        boolean button = CommandBase.oi.driver.getA();
-        
-        if(!lastAState && button){
-            driveState = !driveState;
-        }
-        lastAState = button;
-        
-        if(driveState){
-            flippers.switchRightFlippers();
-        }
-        else{
-            flippers.switchLeftFlippers();
-        }
+        CommandBase.Intake.swithIntake();
     }
 
     // Make this return true when this Command no longer needs to run execute()

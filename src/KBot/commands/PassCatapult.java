@@ -2,15 +2,15 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package KitBot.commands;
+package KBot.commands;
 
 /**
  *
  * @author KBotics
  */
-public class LoadCatapult extends CommandBase {
+public class PassCatapult extends CommandBase {
     
-    public LoadCatapult() {
+    public PassCatapult() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -24,7 +24,7 @@ public class LoadCatapult extends CommandBase {
     protected void execute() {
         CommandBase.catapult.calibratePotentiometer();
         if(CommandBase.catapult.isCalibrated()){
-            CommandBase.catapult.loadRoutine();
+            CommandBase.catapult.passRoutine();
         }
         else{
             CommandBase.catapult.shootRoutineByTiming();

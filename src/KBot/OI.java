@@ -1,7 +1,12 @@
 
-package KitBot;
+package KBot;
 
-import KitBot.commands.*;
+import KBot.commands.PassCatapult;
+import KBot.commands.ShootCatapult;
+import KBot.commands.ActivateLeftFlippers;
+import KBot.commands.ActivateRightFlippers;
+import KBot.commands.LoadCatapult;
+import KBot.commands.IntakeDown;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.AnalogChannel;

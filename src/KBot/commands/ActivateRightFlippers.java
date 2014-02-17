@@ -2,16 +2,16 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package KitBot.commands;
+package KBot.commands;
 
 /**
  *
  * @author KBotics
  */
-public class ActivateLeftFlippers extends CommandBase {
+public class ActivateRightFlippers extends CommandBase {
     boolean lastAState;
     boolean driveState;
-    public ActivateLeftFlippers() {
+    public ActivateRightFlippers() {
         // Use requires() here to declare subsystem dependencies
         requires(CommandBase.flippers);
     }
@@ -21,7 +21,7 @@ public class ActivateLeftFlippers extends CommandBase {
         lastAState = true;
         driveState = false;
     }
-    
+
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         boolean button = CommandBase.oi.driver.getA();
@@ -32,10 +32,10 @@ public class ActivateLeftFlippers extends CommandBase {
         lastAState = button;
         
         if(driveState){
-            flippers.switchLeftFlippers();
+            flippers.switchRightFlippers();
         }
         else{
-            flippers.switchRightFlippers();
+            flippers.switchLeftFlippers();
         }
     }
 

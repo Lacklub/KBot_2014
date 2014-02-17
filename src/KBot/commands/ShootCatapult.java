@@ -1,5 +1,5 @@
 
-package KitBot.commands;
+package KBot.commands;
 
 import edu.wpi.first.wpilibj.Timer;
 

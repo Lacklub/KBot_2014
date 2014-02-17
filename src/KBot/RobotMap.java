@@ -1,4 +1,4 @@
-package KitBot;
+package KBot;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;

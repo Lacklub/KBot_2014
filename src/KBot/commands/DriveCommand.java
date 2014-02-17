@@ -1,9 +1,9 @@
 
-package KitBot.commands;
+package KBot.commands;
 
 
-import KitBot.RobotMap;
-import KitBot.XboxController;
+import KBot.RobotMap;
+import KBot.XboxController;
 
 
 /**

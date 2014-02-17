@@ -1,9 +1,9 @@
 
-package KitBot.subsystems;
+package KBot.subsystems;
 
-import KitBot.RobotMap;
-import KitBot.commands.CommandBase;
-import KitBot.commands.DriveCommand;
+import KBot.RobotMap;
+import KBot.commands.CommandBase;
+import KBot.commands.DriveCommand;
 import edu.wpi.first.wpilibj.command.Subsystem; 
 /**
  *
