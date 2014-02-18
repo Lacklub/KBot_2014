@@ -21,7 +21,7 @@ public class Catapult extends Subsystem
     public boolean finished;
     private double lastCalibratedValue = 0;
     private double timeSinceLastState = 0;
-    private boolean potentiometerFailed = false;
+    //private boolean potentiometerFailed = false;
     
     public int shootingState = 0;
     
@@ -111,7 +111,7 @@ public class Catapult extends Subsystem
             calibratedValue = lastCalibratedValue;
         }
         System.out.println("corrected value: " + calibratedValue);
-        if(shootingState == 0 &&  calibratedValue > 0.05 && timer.get() - timeSinceLastState < 0.5)
+        if(shootingState == 0 &&  calibratedValue > 0.1 && timer.get() - timeSinceLastState < 0.5)
         {
             shoot(-0.5);
             disengageBrake();
@@ -134,7 +134,8 @@ public class Catapult extends Subsystem
         {
             if (isLimitPressed() && calibratedValue>0.1) 
             {
-                potentiometerFailed=true;
+                //potentiometerFailed=true;
+                System.out.println("pot failure at 1");
             }
             shootingState = -2;
             timeSinceLastState = timer.get();
@@ -155,7 +156,7 @@ public class Catapult extends Subsystem
         }
         
         if(shootingState == 2 && calibratedValue < 1.1 && 
-                timer.get() - timeSinceLastState < 0.5)
+                timer.get() - timeSinceLastState < 1)
         { 
             //changing this should change shooting angle 
             shoot(1); // changing this should change shooting speed
@@ -166,7 +167,8 @@ public class Catapult extends Subsystem
         {
             if (calibratedValue < 0.9) 
             {
-                potentiometerFailed = true;
+                //potentiometerFailed=true;
+                System.out.println("pot failure at 2");
             }
             shootingState = 3;
             timeSinceLastState = timer.get();
@@ -388,7 +390,7 @@ public class Catapult extends Subsystem
     
     public boolean hasPotFailed()
     {
-        return potentiometerFailed;
+        return false; //potentiometerFailed;
     }
     
     public void calibratePotentiometer()
@@ -401,7 +403,7 @@ public class Catapult extends Subsystem
             RobotMap.potentiometerScaling = potValue - (1.1515*potValue - 3.314); 
             // derived from measurements of max/min on both robots and approximate scaling with linear equation
         }
-        double calibratedValue = (RobotMap.pot.get()-RobotMap.potentiometerOffset)/RobotMap.potentiometerScaling;
+        /*double calibratedValue = (RobotMap.pot.get()-RobotMap.potentiometerOffset)/RobotMap.potentiometerScaling;
         if(calibratedValue != 0.0)
         {
             calibratedValue = 1 - calibratedValue;
@@ -412,6 +414,6 @@ public class Catapult extends Subsystem
         }
         if(calibratedValue < 0.1){
             potentiometerFailed = false;
-        }
+        }*/
     }
 }

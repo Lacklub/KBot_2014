@@ -22,9 +22,9 @@ public class AutonomousCommand extends CommandGroup {
         // these will run in order.
             
             addSequential(new VisionCommand());
-            addSequential(new AutonomousDrive(2));
-            addSequential(new LoadCatapult());
-            addSequential(new WaitCommand(1));
+            addSequential(new AutonomousDrive(2.5));
+            addParallel(new LoadCatapult());
+            addSequential(new WaitCommand(1.5));
             addSequential(new ShootCatapult());
     }
         
