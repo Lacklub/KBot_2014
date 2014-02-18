@@ -6,6 +6,7 @@ package KBot.autonomous;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import KBot.commands.*;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *
@@ -21,7 +22,9 @@ public class AutonomousCommand extends CommandGroup {
         // these will run in order.
             
             addSequential(new VisionCommand());
-            addSequential(new AutonomousDrive(3));
+            addSequential(new AutonomousDrive(2));
+            addSequential(new LoadCatapult());
+            addSequential(new WaitCommand(1));
             addSequential(new ShootCatapult());
     }
         

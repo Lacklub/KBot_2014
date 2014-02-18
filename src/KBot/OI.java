@@ -1,11 +1,6 @@
 package KBot;
 
-import KBot.commands.PassCatapult;
-import KBot.commands.ShootCatapult;
-import KBot.commands.ActivateLeftFlippers;
-import KBot.commands.ActivateRightFlippers;
-import KBot.commands.LoadCatapult;
-import KBot.commands.IntakeDown;
+import KBot.commands.*;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -24,6 +19,7 @@ public class OI
     //Button operatorIntakeToggle;
     Button pass;
     Button load;
+    
     
     public OI()
     {
@@ -44,6 +40,7 @@ public class OI
         shoot.whenPressed(new ShootCatapult());
         pass.whenPressed(new PassCatapult());
         load.whenPressed(new LoadCatapult());
+        
     }
 }
 

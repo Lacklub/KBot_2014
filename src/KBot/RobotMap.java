@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.Timer;
@@ -34,8 +33,8 @@ public class RobotMap
     public static Compressor compressor;
     
     //Declare brakes
-    public static Solenoid leftBrake;
-    public static Solenoid rightBrake;
+    public static DoubleSolenoid leftBrake;
+    public static DoubleSolenoid rightBrake;
     
     //Declare other solenoid
     public static DoubleSolenoid leftFlipper;
@@ -76,10 +75,10 @@ public class RobotMap
         compressor.start();
         
         //Initializing Brake solenoids
-        leftBrake = new Solenoid(2,3);
-        leftBrake.set(false);
-        rightBrake = new Solenoid(2,5);
-        rightBrake.set(false);
+        leftBrake = new DoubleSolenoid(2,3,4);
+        leftBrake.set(DoubleSolenoid.Value.kReverse);
+        rightBrake = new DoubleSolenoid(2,5,6);
+        rightBrake.set(DoubleSolenoid.Value.kReverse);
         
         //Initializing all DoubleSolenoids
         leftFlipper = new DoubleSolenoid(1, 1, 2);
@@ -87,7 +86,7 @@ public class RobotMap
         rightFlipper = new DoubleSolenoid(1, 3, 4);
         rightFlipper.set(DoubleSolenoid.Value.kReverse);
         peter = new DoubleSolenoid(2, 1, 2);
-        peter.set(DoubleSolenoid.Value.kOff);
+        peter.set(DoubleSolenoid.Value.kForward);
         
         //Initialize Input Sensors
         shooterLimit = new DigitalInput(1);

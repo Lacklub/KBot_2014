@@ -25,7 +25,7 @@ public class AutonomousDrive extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        CommandBase.DriveTrain.drive(-0.8, -0.8);
+        CommandBase.DriveTrain.drive(-0.6, -0.7);
     }
 
     // Make this return true when this Command no longer needs to run execute()

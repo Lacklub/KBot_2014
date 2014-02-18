@@ -245,7 +245,7 @@ public class Catapult extends Subsystem
         if(shootingState == 2 && calibratedValue < 0.8)
         { 
             //changing this should change shooting angle 
-            shoot(0.55); // changing this should change shooting speed
+            shoot(0.6); // changing this should change shooting speed
             disengageBrake();
             System.out.println("in state 2");
         }
@@ -349,16 +349,23 @@ public class Catapult extends Subsystem
         RobotMap.rightCatapult.set(-speed);
     }
     
-    private void engageBrake()
+    public void engageBrake()
     {
-        RobotMap.leftBrake.set(false);
-        RobotMap.rightBrake.set(false);
+        RobotMap.leftBrake.set(DoubleSolenoid.Value.kForward);
+        RobotMap.rightBrake.set(DoubleSolenoid.Value.kForward);
     }
     
-    private void disengageBrake()
+    public void disengageBrake()
     {
-        RobotMap.leftBrake.set(true);
-        RobotMap.rightBrake.set(true);
+        RobotMap.leftBrake.set(DoubleSolenoid.Value.kReverse);
+        RobotMap.rightBrake.set(DoubleSolenoid.Value.kReverse);
+    }
+    
+    
+    public void offBrake()
+    {
+        RobotMap.leftBrake.set(DoubleSolenoid.Value.kOff);
+        RobotMap.rightBrake.set(DoubleSolenoid.Value.kOff);
     }
     
     private boolean isLimitPressed()
