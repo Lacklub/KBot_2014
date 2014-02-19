@@ -48,10 +48,10 @@ public class DriveCommand extends CommandBase
         
         if(driveState)
         {
-            CommandBase.DriveTrain.drive(persistentLeftValue, persistentRightValue);
+            CommandBase.DriveTrain.driveWithPID(persistentLeftValue, persistentRightValue);
         }
         else{
-            CommandBase.DriveTrain.drive(-persistentRightValue, -persistentLeftValue);
+            CommandBase.DriveTrain.driveWithPID(-persistentRightValue, -persistentLeftValue);
         }
     }
 

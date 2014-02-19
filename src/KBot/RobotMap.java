@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.Timer;
 
@@ -18,27 +19,19 @@ import edu.wpi.first.wpilibj.Timer;
 public class RobotMap 
 {
     //Declare motors
-    public static SpeedController rightBackMotor;
-    public static SpeedController leftCatapult;
-    public static SpeedController leftIntakeMotor;
-    public static SpeedController rightFrontMotor;
-    public static SpeedController rightTopMotor;
-    public static SpeedController rightCatapult;
-    public static SpeedController rightIntakeMotor;
-    public static SpeedController leftFrontMotor;
-    public static SpeedController leftTopMotor;
-    public static SpeedController leftBackMotor;
+    public static SpeedController rightBackMotor, rightTopMotor, rightFrontMotor;
+    public static SpeedController leftCatapult, rightCatapult;
+    public static SpeedController leftIntakeMotor, rightIntakeMotor;
+    public static SpeedController leftBackMotor, leftTopMotor, leftFrontMotor;
 
     //Declare compressor
     public static Compressor compressor;
     
     //Declare brakes
-    public static DoubleSolenoid leftBrake;
-    public static DoubleSolenoid rightBrake;
+    public static DoubleSolenoid leftBrake, rightBrake;
     
-    //Declare other solenoid
-    public static DoubleSolenoid leftFlipper;
-    public static DoubleSolenoid rightFlipper;
+    //Declare other solenoids
+    public static DoubleSolenoid leftFlipper, rightFlipper;
     public static DoubleSolenoid peter;
     
     //Declare input sensors
@@ -50,6 +43,9 @@ public class RobotMap
     
     //Declare autonomous Timer
     public static Timer autonomousTimer;
+    
+    //Declare encoders for PID during autonomous
+    public static Encoder leftEncoder, rightEncoder;
     
     //THESE NEED TO BE MOVED TO WHERE POTENTIOMETER IS USED
     public static boolean isPotentiometerSet;
@@ -109,5 +105,15 @@ public class RobotMap
         
         //initialize autonomous Timer
         autonomousTimer = new Timer();
+        
+        //initialize encoders
+        leftEncoder = new Encoder(3,4);
+        leftEncoder.reset();
+        //leftEncoder.setDistancePerPulse();
+        leftEncoder.start();
+        rightEncoder = new Encoder(5,6, true);
+        rightEncoder.reset();
+        //rightEncoder.setDistancePerPulse();
+        rightEncoder.start();
     }
 }
