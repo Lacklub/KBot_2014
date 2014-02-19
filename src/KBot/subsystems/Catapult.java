@@ -3,6 +3,7 @@ package KBot.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import KBot.RobotMap;
+import KBot.commands.PrintValues;
 import edu.wpi.first.wpilibj.Timer;
 
 /**
@@ -28,6 +29,19 @@ public class Catapult extends Subsystem
     public void initDefaultCommand() 
     {
         // Set the default command for a subsystem here.
+        setDefaultCommand(new PrintValues());
+    }
+    
+    public void print()
+    {
+        //calibratePotentiometer();
+        double calibratedValue = (RobotMap.pot.get()-RobotMap.potentiometerOffset)/RobotMap.potentiometerScaling;
+        if(calibratedValue != 0.0)
+        {
+            calibratedValue = (-calibratedValue + 1)/2;
+        }
+        System.out.println("calibrated value: " + calibratedValue);
+        System.out.println("pot value: " + RobotMap.pot.get());
     }
     
     public void initializeShootRoutine()
@@ -46,6 +60,7 @@ public class Catapult extends Subsystem
     
     public void shootRoutineByTiming()
     {
+        System.out.println("shooting by timing");
         if(timer.get() < initialPositionTime && !isLimitPressed())
         {
             shoot(-0.8);
@@ -103,7 +118,7 @@ public class Catapult extends Subsystem
         double calibratedValue = (RobotMap.pot.get()-RobotMap.potentiometerOffset)/RobotMap.potentiometerScaling;
         if(calibratedValue != 0.0)
         {
-            calibratedValue = 1 - calibratedValue;
+            calibratedValue = (-calibratedValue + 1)/2;
         }
         else
         {
@@ -229,7 +244,7 @@ public class Catapult extends Subsystem
         double calibratedValue = (RobotMap.pot.get()-RobotMap.potentiometerOffset)/RobotMap.potentiometerScaling;
         if(calibratedValue != 0.0)
         {
-            calibratedValue = 1 - calibratedValue;
+            calibratedValue = (-calibratedValue + 1)/2;
         }
         else{
             calibratedValue = lastCalibratedValue;
@@ -306,7 +321,7 @@ public class Catapult extends Subsystem
         double calibratedValue = (RobotMap.pot.get()-RobotMap.potentiometerOffset)/RobotMap.potentiometerScaling;
         if(calibratedValue != 0.0)
         {
-            calibratedValue = 1 - calibratedValue;
+            calibratedValue = (-calibratedValue + 1)/2;
         }
         else
         {
@@ -346,6 +361,7 @@ public class Catapult extends Subsystem
     
     private void shoot(double speed)
     {
+        System.out.println("motor value: " + speed);
         speed = signSquared(speed);
         RobotMap.leftCatapult.set(speed);
         RobotMap.rightCatapult.set(-speed);
@@ -372,6 +388,7 @@ public class Catapult extends Subsystem
     
     private boolean isLimitPressed()
     {
+        System.out.println("Limit switch: " + !RobotMap.shooterLimit.get());
         return !RobotMap.shooterLimit.get();
     }
     
@@ -397,10 +414,17 @@ public class Catapult extends Subsystem
     {
         if(isLimitPressed())
         {
+            double bottomValueOne = 2.88;
+            double topValueOne = 0.1;
+            double bottomValueTwo = 2.47;
+            double topValueTwo = 0;
+            double slope = (topValueOne-topValueTwo)/(bottomValueOne-bottomValueTwo);
+            double intercept = topValueOne - slope*bottomValueOne;
             RobotMap.isPotentiometerSet = true;
             double potValue = RobotMap.pot.get();
-            RobotMap.potentiometerOffset = (1.1515*potValue - 3.314);
-            RobotMap.potentiometerScaling = potValue - (1.1515*potValue - 3.314); 
+            RobotMap.potentiometerOffset = slope*potValue - intercept;//(1.1515*potValue - 3.314);
+            RobotMap.potentiometerScaling = potValue - (slope*potValue - intercept);//potValue - (1.1515*potValue - 3.314); 
+            System.out.println("pot has been calibrated");
             // derived from measurements of max/min on both robots and approximate scaling with linear equation
         }
         /*double calibratedValue = (RobotMap.pot.get()-RobotMap.potentiometerOffset)/RobotMap.potentiometerScaling;

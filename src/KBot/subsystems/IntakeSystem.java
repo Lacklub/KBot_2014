@@ -22,6 +22,7 @@ public class IntakeSystem extends Subsystem
     
     public void runIntake(double speed) 
     {
+        speed = speed * 0.5;
         RobotMap.leftIntakeMotor.set(speed);
         RobotMap.rightIntakeMotor.set(-speed);
     }
